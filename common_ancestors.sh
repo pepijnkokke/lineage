@@ -8,13 +8,13 @@ fi
 # Collect ancestry of $1 (unless it exists).
 if [ ! -f "$1.jl" ]; then
     echo "Collecting ancestry of $1..."
-    scrapy crawl ancestors -o "$1.jl" -a start-id="$1" >/dev/null
+    scrapy runspider -LERROR ancestor_scraper.py -o "$1.jl" -a start-id="$1"
 fi
 
 # Collect ancestry of $1 (unless it exists).
 if [ ! -f "$2.jl" ]; then
     echo "Collecting ancestry of $2..."
-    scrapy crawl ancestors -o "$2.jl" -a start-id="$2" >/dev/null
+    scrapy runspider -LERROR ancestor_scraper.py -o "$2.jl" -a start-id="$2"
 fi
 
 # Compute the first common ancestors.
